@@ -90,7 +90,7 @@ public class Reserva extends  JFrame {
         balcónCheckBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cbSelección.setText("Has seleccionado Balcón");
+                cbSelección.setText("Has seleccionado Balcón ");
                 cbSelección.setVisible(true);
             }
         });
