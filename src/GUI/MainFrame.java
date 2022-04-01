@@ -39,39 +39,39 @@ public class MainFrame extends  JFrame{
         });
 
         entrarButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
 
-                        if(!Objects.equals(tfUsuario.getText(), "")  &&  (!Objects.equals(String.valueOf(tfContraseña.getPassword()),"" )))
-                        {
-                            Reserva reserva = new Reserva();
-                            setVisible(false);
-                            reserva.setVisible(true);
-                        }else{
-                            if(Objects.equals(tfUsuario.getText(), "")){
-                                error_usuario.setForeground(new Color(255,0,0));
-                                error_usuario.setText("Rellene el campo obligatorio");
-                                error_usuario.setVisible(true);
-                            }
-                            if(Objects.equals(String.valueOf(tfContraseña.getPassword()), "")){
-                                error_contraseña.setForeground(new Color(255,0,0));
-                                error_contraseña.setText("Rellene el campo obligatorio");
-                                error_contraseña.setVisible(true);
-                            }
-
-                        }
-
-
+                if(!Objects.equals(tfUsuario.getText(), "")  &&  (!Objects.equals(String.valueOf(tfContraseña.getPassword()),"" )))
+                {
+                    ReservaGui reservaGui = new ReservaGui();
+                    setVisible(false);
+                    reservaGui.setVisible(true);
+                }else{
+                    if(Objects.equals(tfUsuario.getText(), "")){
+                        error_usuario.setForeground(new Color(255,0,0));
+                        error_usuario.setText("Rellene el campo obligatorio");
+                        error_usuario.setVisible(true);
+                    }
+                    if(Objects.equals(String.valueOf(tfContraseña.getPassword()), "")){
+                        error_contraseña.setForeground(new Color(255,0,0));
+                        error_contraseña.setText("Rellene el campo obligatorio");
+                        error_contraseña.setVisible(true);
+                    }
 
                 }
-            });
+
+
+
+            }
+        });
 
 
     }
     public static void main(String[] args) {
         // TODO: place custom component creation code here
-    MainFrame myFrame = new MainFrame();
+        MainFrame myFrame = new MainFrame();
 
     }
 }
