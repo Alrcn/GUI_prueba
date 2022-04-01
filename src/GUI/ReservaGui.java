@@ -151,6 +151,29 @@ public class ReservaGui extends  JFrame {
                     selectReg.setVisible(true);
                 }
             });
+            calcularButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String aux;
+                    int cant;
+                    if(estandarCheckBox.isSelected()){
+                        cant = ((Integer) sEstandar.getValue()).intValue();
+                        aux = String.valueOf(50 * cant);
+
+                        tfPrecio.setText(aux+"€");
+                    }else if(balcónCheckBox.isSelected()){
+                        cant = ((Integer) sBalcon.getValue()).intValue();
+                        aux = String.valueOf(75 * cant);
+
+                        tfPrecio.setText(aux+"€");
+                    }else if(suiteCheckBox.isSelected()){
+                        cant = ((Integer) sSuite.getValue()).intValue();
+                        aux = String.valueOf(100 * cant);
+
+                        tfPrecio.setText(aux+"€");
+                    }
+                }
+            });
             confirmarButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -242,6 +265,7 @@ public class ReservaGui extends  JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
 
