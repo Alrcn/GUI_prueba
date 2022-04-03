@@ -155,20 +155,13 @@ public class ReservaGui extends  JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     String aux;
-                    int cant;
-                    if(estandarCheckBox.isSelected()){
-                        cant = ((Integer) sEstandar.getValue()).intValue();
-                        aux = String.valueOf(50 * cant);
+                    int cantE;int cantB;int cantS;
 
-                        tfPrecio.setText(aux+"€");
-                    }else if(balcónCheckBox.isSelected()){
-                        cant = ((Integer) sBalcon.getValue()).intValue();
-                        aux = String.valueOf(75 * cant);
-
-                        tfPrecio.setText(aux+"€");
-                    }else if(suiteCheckBox.isSelected()){
-                        cant = ((Integer) sSuite.getValue()).intValue();
-                        aux = String.valueOf(100 * cant);
+                    if(estandarCheckBox.isSelected()||balcónCheckBox.isSelected()||suiteCheckBox.isSelected()){
+                        cantE = ((Integer) sEstandar.getValue()).intValue();
+                        cantB = ((Integer) sBalcon.getValue()).intValue();
+                        cantS = ((Integer) sSuite.getValue()).intValue();
+                        aux = String.valueOf(50 * cantE + 75*cantB + 100*cantS);
 
                         tfPrecio.setText(aux+"€");
                     }
