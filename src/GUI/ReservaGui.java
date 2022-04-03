@@ -70,7 +70,7 @@ public class ReservaGui extends  JFrame {
 
 
 
-
+            //Boton limpiar
             limpiarButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -81,6 +81,8 @@ public class ReservaGui extends  JFrame {
                     tfEmail.setText("");
                     tfTarjeta.setText("");
                     tfTelefono.setText("");
+                    tfEntrada.setText("");
+                    tfSalida.setText("");
 
                     tfPrecio.setText("");
                     sEstandar.setValue(0);
@@ -99,6 +101,7 @@ public class ReservaGui extends  JFrame {
                 }
             });
 
+            //Boton cancelar
             cancelarButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -108,6 +111,7 @@ public class ReservaGui extends  JFrame {
 
                 }
             });
+            //Las checkbox´s
             estandarCheckBox.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -151,6 +155,8 @@ public class ReservaGui extends  JFrame {
                     selectReg.setVisible(true);
                 }
             });
+
+            //Boton calcular precio
             calcularButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -167,6 +173,7 @@ public class ReservaGui extends  JFrame {
                     }
                 }
             });
+            //Botón confirmar
             confirmarButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -179,71 +186,62 @@ public class ReservaGui extends  JFrame {
 
 
                     FinalFrame finalFrame = new FinalFrame();
-                    if (estandarCheckBox.isSelected() && !Objects.equals(tfNombre.getText(), "")&& !Objects.equals(tfApellidos.getText(), "")
+
+                    //Con este if comprobamos que todos los campos han sido rellenados por el usuario
+                    if(!Objects.equals(tfNombre.getText(), "")&& !Objects.equals(tfApellidos.getText(), "")
                             && !Objects.equals(tfDirección.getText(), "")&& !Objects.equals(tfTelefono.getText(), "")&& !Objects.equals(tfDNI.getText(), "")
                             && !Objects.equals(tfEmail.getText(), "")&& !Objects.equals(tfTarjeta.getText(), "")
-                            && !Objects.equals(tfEntrada.getText(), "") && !Objects.equals(tfSalida.getText(), "")
-                            && ((Integer) sEstandar.getValue()).intValue()!=0) {
+                            && !Objects.equals(tfEntrada.getText(), "") && !Objects.equals(tfSalida.getText(), "") && (estandarCheckBox.isSelected()
+                            || balcónCheckBox.isSelected() || suiteCheckBox.isSelected())) {
 
-                        r1 = new Reserva(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(), tfTelefono.getText(),
-                                tfEntrada.getText(), tfSalida.getText(), cbRegimen.getName());
+                        //Con estos if realizamos la reserva para el tipo de habitación seleccionada
+                        if (estandarCheckBox.isSelected() && ((Integer) sEstandar.getValue()).intValue() > 0) {
 
-                        aux = "estandar";
-                        cant = ((Integer) sEstandar.getValue()).intValue();
-                        hotel.HabitacionLibre(aux, r1, cant);
+                            r1 = new Reserva(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(), tfTelefono.getText(),
+                                    tfEntrada.getText(), tfSalida.getText(), cbRegimen.getName());
+
+                            aux = "estandar";
+                            cant = ((Integer) sEstandar.getValue()).intValue();
+                            hotel.HabitacionLibre(aux, r1, cant);
+
+
+
+                        } else {
+                        }
+
+                        if (balcónCheckBox.isSelected() && ((Integer) sBalcon.getValue()).intValue() > 0) {
+
+
+                            r1 = new Reserva(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(), tfTelefono.getText(),
+                                    tfEntrada.getText(), tfSalida.getText(), cbRegimen.getName());
+
+                            aux = "balcon";
+                            cant = ((Integer) sBalcon.getValue()).intValue();
+
+                            hotel.HabitacionLibre(aux, r1, cant);
+
+
+                        } else {
+                        }
+
+                        if (suiteCheckBox.isSelected() && ((Integer) sSuite.getValue()).intValue() > 0) {
+
+
+                            r1 = new Reserva(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(), tfTelefono.getText(),
+                                    tfEntrada.getText(), tfSalida.getText(), cbRegimen.getName());
+
+
+                            aux = "suite";
+                            cant = ((Integer) sSuite.getValue()).intValue();
+
+                            hotel.HabitacionLibre(aux, r1, cant);
+
+
+                        } else {
+                        }
                         setVisible(false);
                         finalFrame.setVisible(true);
-
-
-                    } else {
-
-                        error.setForeground(new Color(255, 0, 0));
-                        error.setText("Debe rellenar todos los campos obligatorios");
-                        error.setVisible(true);}
-
-                    if (balcónCheckBox.isSelected()&& !Objects.equals(tfNombre.getText(), "")&& !Objects.equals(tfApellidos.getText(), "")
-                            && !Objects.equals(tfDirección.getText(), "")&& !Objects.equals(tfTelefono.getText(), "")&& !Objects.equals(tfDNI.getText(), "")
-                            && !Objects.equals(tfEmail.getText(), "")&& !Objects.equals(tfTarjeta.getText(), "")
-                            && !Objects.equals(tfEntrada.getText(), "") && !Objects.equals(tfSalida.getText(), "")
-                            && ((Integer) sBalcon.getValue()).intValue()!=0) {
-
-
-                        r1 = new Reserva(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(), tfTelefono.getText(),
-                                tfEntrada.getText(), tfSalida.getText(), cbRegimen.getName());
-
-                        aux = "balcon";
-                        cant = ((Integer) sBalcon.getValue()).intValue();
-
-                        hotel.HabitacionLibre(aux, r1, cant);
-
-                        setVisible(false);
-                        finalFrame.setVisible(true);
-                    } else {
-                        error.setForeground(new Color(255, 0, 0));
-                        error.setText("Debe rellenar todos los campos obligatorios");
-                        error.setVisible(true);}
-
-                    if (suiteCheckBox.isSelected()&& !Objects.equals(tfNombre.getText(), "")&& !Objects.equals(tfApellidos.getText(), "")
-                            && !Objects.equals(tfDirección.getText(), "")&& !Objects.equals(tfTelefono.getText(), "")&& !Objects.equals(tfDNI.getText(), "")
-                            && !Objects.equals(tfEmail.getText(), "")&& !Objects.equals(tfTarjeta.getText(), "")
-                            && !Objects.equals(tfEntrada.getText(), "") && !Objects.equals(tfSalida.getText(), "")
-                            && ((Integer) sSuite.getValue()).intValue()!=0) {
-
-
-                        r1 = new Reserva(tfDNI.getText(), tfNombre.getText(), tfApellidos.getText(), tfTelefono.getText(),
-                                tfEntrada.getText(), tfSalida.getText(), cbRegimen.getName());
-
-
-                        aux = "suite";
-                        cant = ((Integer) sSuite.getValue()).intValue();
-
-                        hotel.HabitacionLibre(aux, r1, cant);
-
-                        setVisible(false);
-
-                        finalFrame.setVisible(true);
-                        System.out.println(hotel.toString());
-                    } else {
+                    }else {
                         error.setForeground(new Color(255, 0, 0));
                         error.setText("Debe rellenar todos los campos obligatorios");
                         error.setVisible(true);
