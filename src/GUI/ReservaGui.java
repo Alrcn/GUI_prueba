@@ -195,7 +195,13 @@ public class ReservaGui extends  JFrame {
                         finalFrame.setVisible(true);
 
 
-                    } else if (balcónCheckBox.isSelected()&& !Objects.equals(tfNombre.getText(), "")&& !Objects.equals(tfApellidos.getText(), "")
+                    } else {
+
+                        error.setForeground(new Color(255, 0, 0));
+                        error.setText("Debe rellenar todos los campos obligatorios");
+                        error.setVisible(true);}
+
+                    if (balcónCheckBox.isSelected()&& !Objects.equals(tfNombre.getText(), "")&& !Objects.equals(tfApellidos.getText(), "")
                             && !Objects.equals(tfDirección.getText(), "")&& !Objects.equals(tfTelefono.getText(), "")&& !Objects.equals(tfDNI.getText(), "")
                             && !Objects.equals(tfEmail.getText(), "")&& !Objects.equals(tfTarjeta.getText(), "")
                             && !Objects.equals(tfEntrada.getText(), "") && !Objects.equals(tfSalida.getText(), "")
@@ -212,7 +218,12 @@ public class ReservaGui extends  JFrame {
 
                         setVisible(false);
                         finalFrame.setVisible(true);
-                    } else if (suiteCheckBox.isSelected()&& !Objects.equals(tfNombre.getText(), "")&& !Objects.equals(tfApellidos.getText(), "")
+                    } else {
+                        error.setForeground(new Color(255, 0, 0));
+                        error.setText("Debe rellenar todos los campos obligatorios");
+                        error.setVisible(true);}
+
+                    if (suiteCheckBox.isSelected()&& !Objects.equals(tfNombre.getText(), "")&& !Objects.equals(tfApellidos.getText(), "")
                             && !Objects.equals(tfDirección.getText(), "")&& !Objects.equals(tfTelefono.getText(), "")&& !Objects.equals(tfDNI.getText(), "")
                             && !Objects.equals(tfEmail.getText(), "")&& !Objects.equals(tfTarjeta.getText(), "")
                             && !Objects.equals(tfEntrada.getText(), "") && !Objects.equals(tfSalida.getText(), "")
