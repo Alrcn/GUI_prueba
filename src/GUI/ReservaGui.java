@@ -1,7 +1,6 @@
 package GUI;
+import PaqC02.*;
 
-import PaqC02.Hotel;
-import PaqC02.Reserva;
 
 import javax.swing.*;
 import java.awt.*;
